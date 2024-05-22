@@ -1,37 +1,30 @@
-from selenium.webdriver.common.by import By
-import undetected_chromedriver as uc
-import os
-from time import sleep
+import asyncio
+import nodriver as uc
+
+async def main():
+    browser = await uc.start()
+    page = await browser.get('https://www.nowsecure.nl')
+
+    await page.save_screenshot()
+    await page.get_content()
+    await page.scroll_down(150)
+    elems = await page.select_all('*[src]')
+    for elem in elems:
+        await elem.flash()
+
+    page2 = await browser.get('https://twitter.com', new_tab=True)
+    page3 = await browser.get('https://github.com/ultrafunkamsterdam/nodriver', new_window=True)
+
+    for p in (page, page2, page3):
+       await p.bring_to_front()
+       await p.scroll_down(200)
+       await p   # wait for events to be processed
+       await p.reload()
+       if p != page3:
+           await p.close()
 
 
-current_dir = os.getcwd()
-target_url = 'https://nowsecure.nl'
+if __name__ == '__main__':
 
-# make blank HTML filw with one link to direct URL
-# it's need for pass cloudflare
-with open('blank.html', 'w') as f:
-    f.write(f'<a href="{target_url}" target="_blank">link</a>')
-
-driver = uc.Chrome(
-        headless=False,
-        use_subprocess=False,
-        driver_executable_path='/usr/lib/chromium/chromedriver',
-)
-driver.get(f'file://{current_dir}/blank.html')
-# you need to sleep several seconds after start the browser before you
-# can open cloudflare protected page
-sleep(10)
-
-# and then you can click to the link and open your target URL
-links = driver.find_elements(By.XPATH, "//a[@href]")
-links[0].click()
-
-# after opening the URL, we need to sleep during cloudflare chacking the browser
-sleep(15)
-
-# and last step: switch the driver to second tab in the browser
-# it's need for managing page by the driver
-driver.switch_to.window(driver.window_handles[1])
-
-# take a screenshot to /app dir
-driver.save_screenshot('nowsecure.png')
+    # since asyncio.run never worked (for me)
+    uc.loop().run_until_complete(main())
