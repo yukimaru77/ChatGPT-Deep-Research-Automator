@@ -34,8 +34,7 @@ RUN apk add --no-cache \
     harfbuzz \
     ca-certificates \
     ttf-freefont \
-    chromium \
-    chromium-chromedriver
+    chromium 
 
 # Install x11vnc
 RUN mkdir ~/.vnc
