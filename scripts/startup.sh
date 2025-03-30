@@ -2,17 +2,20 @@
 
 rm -f /tmp/.X0-lock
 
-# Run Xvfb on dispaly 0.
+# Xvfb を起動
 Xvfb :0 -screen 0 1280x720x16 &
+sleep 3
 
-# Run fluxbox windows manager on display 0.
+# Fluxbox を起動
 fluxbox -display :0 &
+sleep 2
 
-# Run x11vnc on display 0
+# x11vnc を起動
 x11vnc -display :0 -forever -usepw &
+sleep 2
 
-# Add delay
+# 少し待機
 sleep 5
 
-# Run python script
-python test.py
+# コンテナを終了させずに待機状態にする
+tail -f /dev/null

@@ -1,1 +1,3 @@
 nodriver
+PyYAML
+pyperclip

@@ -1,0 +1,39 @@
+browser:
+  headless: false
+  
+urls:
+  chatgpt: "https://chatgpt.com/"
+  
+prompt:
+  default_path: "sample_prompt.txt"
+  encoding: "utf-8"
+  revise: ""
+  
+selectors:
+  text_input_placeholder: "p[data-placeholder=\"Ask anything\"]"
+  followup_placeholder: "p[data-placeholder=\"Provide as many details as possible for best results.\"]"
+  parent_container: "w-full"
+  send_button: "[data-testid=\"send-button\"]"
+  speech_button: "[data-testid=\"composer-speech-button\"]"
+  copy_button: "button[data-testid=\"copy-turn-action-button\"]"
+  main_article: "main article"
+  
+buttons:
+  deep_research: "Deep Research"
+  
+timings:
+  initial_wait: 10  # 秒
+  button_check_interval: 0.5  # 秒
+  max_wait_time_revise: 120  # 最大30分（秒）
+  max_wait_time: 1800  # 最大30分（秒）
+  short_wait: 1  # 秒
+  
+output:
+  base_dir: "response"
+  html_file: "output.html"
+  markdown_file: "output.md"
+  
+clipboard:
+  command: "xclip -selection clipboard -o > output.md"
+
+lang: "ja" #ja or en or zh or ko
