@@ -19,6 +19,8 @@ This repository automates the OpenAI ChatGPT Web UI, allowing you to use the Dee
 
 ## Demo Video 📹
 
+![demo GIF](gifs/demo_en.gif)
+
 Watch an example of batch processing in action:
 
 [Batch Processing Demo](https://www.youtube.com/watch?v=jU_ZSkuf2ZE)

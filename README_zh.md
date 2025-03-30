@@ -19,6 +19,8 @@
 
 ## 演示视频 📹
 
+![demo GIF](gifs/demo_zh.gif)
+
 观看批处理运行示例：
 
 [批处理演示](https://www.youtube.com/watch?v=jU_ZSkuf2ZE)

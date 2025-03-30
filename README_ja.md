@@ -19,6 +19,8 @@
 
 ## デモ動画 📹
 
+![demo GIF](gifs/demo_jp.gif)
+
 バッチ処理の実行例をご覧ください：
 
 [バッチ処理デモ](https://www.youtube.com/watch?v=jU_ZSkuf2ZE)
